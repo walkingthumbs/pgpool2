@@ -26,7 +26,6 @@ echo -e "$STARTUP_MESSAGE\n" | tee -a "$LOG_FILE"
 # Make sure the run directory exists 
 if [ ! -e "$RUN_DIR" ]; then 
 	mkdir -p "$RUN_DIR"
-	chown blabcake:blabcake /var/run/pgpool
 fi
 
 "$PGPOOL" -n | tee -a "$LOG_FILE"
