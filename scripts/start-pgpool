@@ -4,21 +4,23 @@
 #
 
 LOG_FILE="/var/log/pgpool.log"
+PGPOOL="/usr/local/bin/pgpool"
+
+STARTUP_MESSAGE=$(cat <<EOT
+
+Starting pgpool `date +%Y-%m-%d\ %H:%M:%S`
+
+
+EOT
+)
 
 if [ ! $USER = "root" ]; then
 	echo "This must be run as root"
 	exit 1
 fi
 
-STARTUP_MESSAGE=$(cat <<EOT
 
-Starting pgpool `date +%Y-%m-%d\ %H:%M:%S`
- 
+echo -e "$STARTUP_MESSAGE\n" | tee -a "$LOG_FILE"
 
-EOT
-)
-
-echo -e "$STARTUP_MESSAGE" | tee -a "$LOG_FILE"
-
-pgpool -n | tee -a "$LOG_FILE"
+"$PGPOOL" -n | tee -a "$LOG_FILE"
 
