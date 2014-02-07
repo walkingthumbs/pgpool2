@@ -28,5 +28,5 @@ if [ ! -e "$RUN_DIR" ]; then
 	mkdir -p "$RUN_DIR"
 fi
 
-"$PGPOOL" -n | tee -a "$LOG_FILE"
+"$PGPOOL" -n 2>&1 | tee -a "$LOG_FILE"
 
