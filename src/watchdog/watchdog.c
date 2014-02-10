@@ -401,5 +401,5 @@ has_setuid_bit(char * path)
 	}
     
     /* If the user is root, we don't worry about the stickiness */
-    return ((buf.st_uid == 0) && (S_ISREG(buf.st_mode)) && (getuid()?(buf.st_mode & S_ISUID?1:0):1);
+    return (buf.st_uid == 0) && (S_ISREG(buf.st_mode)) && (getuid()?(buf.st_mode & S_ISUID?1:0):1);
 }
