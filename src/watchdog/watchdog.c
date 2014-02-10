@@ -399,5 +399,7 @@ has_setuid_bit(char * path)
 		pool_shmem_exit(1);
 		exit(1);
 	}
-	return ((buf.st_uid == 0) && (S_ISREG(buf.st_mode)) && (buf.st_mode & S_ISUID))?1:0;
+    
+    /* If the user is root, we don't worry about the stickiness */
+    return ((buf.st_uid == 0) && (S_ISREG(buf.st_mode)) && (getuid()?(buf.st_mode & S_ISUID?1:0):1);
 }
