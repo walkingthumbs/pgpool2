@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#Set GATEWAYIPADDRESS to the gateway address of the delegate IP you're using.
+
+ping -c5 GATEWAYIPADDRESS
