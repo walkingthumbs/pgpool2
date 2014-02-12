@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# This will automagically install the crontab to ping the gateway of the delegate ip address every 30 seconds.
+
+cat <(crontab -l) <(echo "* * * * * sleep 0;/home/blabcake/pgpool2/scripts/gwping") | crontab -
+cat <(crontab -l) <(echo "* * * * * sleep 30;/home/blabcake/pgpool2/scripts/gwping") | crontab -
